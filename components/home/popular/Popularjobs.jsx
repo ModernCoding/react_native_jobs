@@ -25,8 +25,6 @@ const Popularjobs = () => {
     num_pages: 1
   })
 
-  console.log (data)
-
 
   return (
     <View style={ styles.container }>
@@ -59,7 +57,7 @@ const Popularjobs = () => {
                         item={ item }
                       />
                     )}
-                    keyExtractor={ item => item?.job_id }
+                    keyExtractor={ item => item?.job_apply_link }
                     contentContainerStyle={{ columnGap: SIZES.medium }}
                     horizontal
                   />
