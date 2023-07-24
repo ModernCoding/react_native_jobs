@@ -13,12 +13,20 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 
 import styles from './popularjobs.style'
 
+import { useFetch } from '../../../hook/useFetch'
+
 
 const Popularjobs = () => {
 
   const router = useRouter ()
-  const error = false
-  const isLoading = false
+  
+  const { data, isLoading, error } = useFetch ('search', {
+    query: 'React developer',
+    num_pages: 1
+  })
+
+  console.log (data)
+
 
   return (
     <View style={ styles.container }>
