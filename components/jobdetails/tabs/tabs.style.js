@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     paddingVertical: SIZES.medium,
     paddingHorizontal: SIZES.xLarge,
     backgroundColor: name === activeTab ? COLORS.primary : "#F3F4F8",
+    color: name === activeTab ? COLORS.lightWhite : COLORS.secondary,
     borderRadius: SIZES.medium,
     marginLeft: 2,
     ...SHADOWS.medium,

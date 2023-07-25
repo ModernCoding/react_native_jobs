@@ -22,6 +22,8 @@ import {
 import { COLORS, icons, SIZES } from '../../constants'
 import { useFetch } from '../../hook/useFetch'
 
+const tabs = [ "About", "Qualifications", "Responsibilities" ]
+
 const JobDetails = () => {
 
   const params = useSearchParams ()
@@ -32,8 +34,38 @@ const JobDetails = () => {
   })
 
   const [ refreshing, setRefreshing ] = useState (false)
+  const [ activeTab, setActiveTab ] = useState (tabs [ 0 ])
 
   const onRefresh = () => {}
+
+  const displayTabContent = () => {
+  
+    switch (activeTab) {
+      
+      case tabs [ 0 ]:
+
+        return <JobAbout
+          info={ data [ 0 ].job_description ?? "No data provider" }
+        />
+      
+        
+      case tabs [ 1 ]:
+      case tabs [ 2 ]:
+
+        return <Specifics
+          title={ activeTab }
+          points={
+            data [ 0 ].job_highlights [ activeTab ] ?? [ 'N/A' ]
+          }
+        />
+    
+
+      default:
+        break
+      
+    }
+  
+  }
 
 
   return (
@@ -105,7 +137,14 @@ const JobDetails = () => {
                         />
 
                         <JobTabs
+                          tabs={ tabs }
+                          activeTab={ activeTab }
+                          setActiveTab={ setActiveTab }
                         />
+
+                        {
+                          displayTabContent ()
+                        }
                       </View>  
                     )
 
