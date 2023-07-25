@@ -48,7 +48,7 @@ const JobDetails = () => {
           info={ data [ 0 ].job_description ?? "No data provider" }
         />
       
-        
+
       case tabs [ 1 ]:
       case tabs [ 2 ]:
 
@@ -150,6 +150,8 @@ const JobDetails = () => {
 
           }
         </ScrollView>
+
+        <JobFooter url={ data [ 0 ]?.job_google_link ?? 'https://careers.google.com/jobs/results' } />
       </>
 
     </SafeAreaView>
